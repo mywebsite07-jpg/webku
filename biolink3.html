@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio Link with Product Slider</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #121212);
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background-color: #202236;
+      border-radius: 15px;
+      padding: 15px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    }
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 5px;
+    }
+    .slider-nav button {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: none;
+      padding: 5px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+    }
+    .slider-nav button:hover {
+      background-color: #00bcd4;
+    }
+    .card h2 {
+      margin-top: 8px;
+      font-size: 18px;
+      color: #00bcd4;
+    }
+    .card p {
+      font-size: 13px;
+      color: #cccccc;
+      margin: 8px 0;
+    }
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #00bcd4, #008ba3);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 10px;
+      margin: 5px 0;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 12px;
+      box-shadow: 0px 3px 6px rgba(0, 188, 212, 0.3);
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 6px 10px rgba(0, 188, 212, 0.5);
+    }
+    .button i {
+      margin-right: 5px;
+      font-size: 14px;
+    }
+    .footer {
+      margin-top: 10px;
+      font-size: 10px;
+      color: #aaaaaa;
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="card">
+    <div class="slider">
+      <div class="slides">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1543353071-087092ec3934?crop=entropy&cs=tinysrgb&w=600&h=400&fit=crop" alt="Burger">
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1606755962773-3c4ef9b56a08?crop=entropy&cs=tinysrgb&w=600&h=400&fit=crop" alt="Pizza">
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?crop=entropy&cs=tinysrgb&w=600&h=400&fit=crop" alt="Pasta">
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?crop=entropy&cs=tinysrgb&w=600&h=400&fit=crop" alt="Salad">
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
+      </div>
+    </div>
+    <h2>Delicious Foods</h2>
+    <p>Explore our menu and enjoy our amazing dishes!</p>
+    <a href="#" class="button">
+      <i class="fas fa-shopping-cart"></i> Order
+    </a>
+    <a href="#" class="button">
+      <i class="fas fa-book"></i> Menu
+    </a>
+    <a href="#" class="button">
+      <i class="fas fa-phone"></i> Contact
+    </a>
+    <a href="#" class="button">
+      <i class="fas fa-map-marker-alt"></i> Location
+    </a>
+    <div class="footer">Dibuat dengan ♥️ oleh AP</div>
+  </div>
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slide = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    document.getElementById('next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slide.length;
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slide.length) % slide.length;
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+  </script>
+</body>
+</html>
